@@ -1,0 +1,11 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: certificadouser
+      POSTGRES_PASSWORD: certificadopass
+      POSTGRES_DB: certificados
+    volumes:
+      - ./.docker/data:/var/lib/postgresql/data
