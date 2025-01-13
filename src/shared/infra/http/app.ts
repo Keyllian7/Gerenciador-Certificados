@@ -1,6 +1,7 @@
 import express from 'express';
 import router from './routes/app.routes';
 import './database/index';
+import "reflect-metadata";
 
 const path = require('path');
 const ejs = require('ejs');
