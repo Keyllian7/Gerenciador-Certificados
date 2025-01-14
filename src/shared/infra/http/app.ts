@@ -1,7 +1,9 @@
+import "reflect-metadata";
+import { errors } from 'celebrate';
 import express from 'express';
 import router from './routes/app.routes';
 import './database/index';
-import "reflect-metadata";
+import '@shared/container'
 
 const path = require('path');
 const ejs = require('ejs');
@@ -21,18 +23,19 @@ const dataCertificate = {
   identification: '18236214',
 };
 
-app.get('/certificate', (req, res) => {
-  
+app.get('/template', (req, res) => {
   ejs.renderFile(path.join(__dirname,"../../../../views/index.ejs"), dataCertificate, (error: Error, certificate: string) => {
     if (error) {
       return res.json({message: 'Error reading file'});
     }
-      return res.send(certificate);
-    })
+    return res.send(certificate);
   })
+})
 
 app.use(express.json());
 app.use(router);
+
+app.use(errors());
 
 app.listen(port, () => {
   console.log(`Application running on port ${port}`);
