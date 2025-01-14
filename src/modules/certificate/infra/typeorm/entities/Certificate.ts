@@ -17,7 +17,7 @@ export class Certificate {
   @Column({ type: "varchar"})
   instructor: string;
 
-  @Column({ type: "varchar"})
+  @Column({ type: "uuid"})
   identification: string;
 
   @Column({ type: "date"})

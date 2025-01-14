@@ -16,7 +16,7 @@ export class CreateCertificate1736794435783 implements MigrationInterface {
           { name: "course", type: "varchar", isNullable: false },
           { name: "hours", type: "integer", isNullable: false },
           { name: "instructor", type: "varchar", isNullable: false },
-          { name: "identification", type: "varchar", isNullable: false },
+          { name: "identification", type: "uuid", isNullable: false },
           { name: "date", type: "date", isNullable: false },
           { name: "city", type: "varchar", isNullable: false },
           {
