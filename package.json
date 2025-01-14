@@ -20,7 +20,8 @@
     "pg": "^8.13.1",
     "reflect-metadata": "^0.2.2",
     "tsyringe": "^4.8.0",
-    "typeorm": "^0.2.29"
+    "typeorm": "^0.2.29",
+    "uuid": "^11.0.5"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",

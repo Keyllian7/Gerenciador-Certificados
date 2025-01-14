@@ -13,7 +13,6 @@ certificateRouter.post("/create",
             course: Joi.string().required(),
             hours: Joi.number().required(),
             instructor: Joi.string().required(),
-            identification: Joi.string().required(),
             date: Joi.date().required(),
             city: Joi.string().required()
         }

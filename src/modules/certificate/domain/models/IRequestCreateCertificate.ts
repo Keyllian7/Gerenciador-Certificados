@@ -3,7 +3,6 @@ export interface IRequestCreateCertificate {
     course: string,
     hours: number,
     instructor: string,
-    identification: string,
     date: Date,
     city: string
 }

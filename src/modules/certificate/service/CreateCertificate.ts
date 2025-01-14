@@ -3,6 +3,7 @@ import { ICertificateRepository } from "../domain/repositories/ICertificateRepos
 import { IRequestCreateCertificate } from "../domain/models/IRequestCreateCertificate";
 import { ICertificate } from "../domain/models/ICertificate";
 import AppError from "@shared/errors/AppError";
+import { v4 as uuidv4 } from 'uuid';
 
 @injectable()
 class CreateCertificateService {
@@ -11,17 +12,18 @@ class CreateCertificateService {
         private certificateRepository: ICertificateRepository
     ) {}
     public async execute({
-        student, course,hours, instructor, identification, date, city
+        student, course,hours, instructor, date, city
     }: IRequestCreateCertificate): Promise<ICertificate> {
-        if(!student || !course || !hours || !instructor || !identification || !date || !city) {
+        if(!student || !course || !hours || !instructor ||!date || !city) {
             throw new AppError('Missing required fields');
         }
+
         const certificate = this.certificateRepository.create({
             student,
             course,
             hours,
             instructor,
-            identification,
+            identification: uuidv4(),
             date,
             city,
             createdAt: new Date(),
