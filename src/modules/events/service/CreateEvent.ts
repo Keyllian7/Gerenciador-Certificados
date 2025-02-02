@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
 import { IEventRepository } from "../domain/repositories/IEventRepository";
-import { IRequestCreateEvent } from "../domain/models/IRequestCreateEvent";
+import { IRequestCreateEvent } from "../domain/models/request/IRequestCreateEvent";
 import { IEvent } from "../domain/models/IEvent";
 
 @injectable()
