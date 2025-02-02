@@ -1,6 +1,6 @@
 import { PrimaryGeneratedColumn, Column, CreateDateColumn, Entity, UpdateDateColumn, DeleteDateColumn } from "typeorm";
 
-@Entity("user")
+@Entity("users")
 export class User {
     @PrimaryGeneratedColumn("uuid")
     id: string;
@@ -17,9 +17,9 @@ export class User {
     @CreateDateColumn({ name: "createdAt" })
       createdAt: Date;
     
-      @UpdateDateColumn({ name: "updatedAt" })
-      updatedAt: Date;
+    @UpdateDateColumn({ name: "updatedAt" })
+    updatedAt: Date;
     
-      @DeleteDateColumn({ name: "deletedAt" })
-      deletedAt: null | Date;
+    @DeleteDateColumn({ name: "deletedAt" })
+    deletedAt: null | Date;
 }

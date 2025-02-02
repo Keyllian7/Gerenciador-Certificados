@@ -7,7 +7,7 @@ import { IRequestCreateUser } from "../domain/models/request/IRequestCreateUser"
 @injectable()
 class CreateUserService {
   constructor(
-    @inject("UserRepository")
+    @inject('UserRepository')
     private userRepository: IUserRepository
   ){}
   public async execute({
