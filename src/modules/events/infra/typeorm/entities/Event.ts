@@ -1,23 +1,23 @@
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
-@Entity("event")
+@Entity("events")
 export class Event {
     @PrimaryGeneratedColumn("uuid")
     id: string;
 
-    @Column()
+    @Column({type: "varchar"})
     name: string;
 
-    @Column()
+    @Column({type: "varchar"})
     description: string;
 
-    @Column()
+    @Column({type: "date"})
     date: Date;
 
-    @Column()
+    @Column({type: "varchar"})
     local: string;
 
-    @Column()
+    @Column({type: "time"})
     time: string;
 
     @CreateDateColumn({ name: "createdAt" })
