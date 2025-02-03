@@ -3,6 +3,7 @@ import { IUserRepository } from "../domain/repositories/IUserRepository";
 import { IUser } from "../domain/models/IUser";
 import AppError from "@shared/errors/AppError";
 import { IRequestCreateUser } from "../domain/models/request/IRequestCreateUser";
+import { hash } from 'bcryptjs';
 
 @injectable()
 class CreateUserService {
@@ -18,10 +19,11 @@ class CreateUserService {
     if(!name || !email || !password){
         throw new AppError('incomplete data in create user service')
     }
+    const hashedPassword = await hash(password, 12)
     const user = this.userRepository.create({
         name,
         email,
-        password,
+        password: hashedPassword,
         createdAt: new Date(),
         updatedAt: new Date(),
         deletedAt: null
