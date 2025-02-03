@@ -18,15 +18,15 @@ class CreateSessionService {
         password
     }: IRequestCreateSession): Promise<IResponseSession>{
         if(!email || !password){
-            throw new Error('incomplete data in create session service')
+            throw new AppError('incomplete data in create session service')
         }
         const user = await this.userRepository.findByEmail(email)
         if(!user){
-            throw new Error('there is no account with that email')
+            throw new AppError('there is no account with that email')
         }
         const confirmPasswrord  = await compare(password, user.password)
         if(!confirmPasswrord){
-            throw new Error('incorrect password')
+            throw new AppError('incorrect password')
         }
         const secret = session.jwt.secret as Secret
         const token = sign({}, secret, {
