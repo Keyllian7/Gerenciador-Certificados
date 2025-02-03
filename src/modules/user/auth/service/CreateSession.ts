@@ -4,7 +4,8 @@ import { IRequestCreateSession } from "../domain/models/IRequestCreateSession";
 import { IResponseSession } from "../domain/models/IResponseSession";
 import { compare } from 'bcryptjs';
 import { sign, Secret } from 'jsonwebtoken';
-import authConfig from '@config/auth';
+import session from '@config/session';
+import AppError from "@shared/errors/AppError";
 
 @injectable()
 class CreateSessionService {
@@ -27,9 +28,10 @@ class CreateSessionService {
         if(!confirmPasswrord){
             throw new Error('incorrect password')
         }
-        const token = sign({}, authConfig.jwt.secret as Secret, {
+        const secret = session.jwt.secret as Secret
+        const token = sign({}, secret, {
             subject: user.id,
-            expiresIn: authConfig.jwt.expiresIn
+            expiresIn: session.jwt.expiresIn
         })
         return { user, token }
     }
