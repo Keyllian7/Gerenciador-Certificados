@@ -1,4 +1,5 @@
 import CreateUserService from "@modules/user/service/CreateUser";
+import AppError from "@shared/errors/AppError";
 import { NextFunction, Response, Request } from "express";
 import { container } from "tsyringe";
 
@@ -9,8 +10,8 @@ export default class UserController {
             const createUser = container.resolve(CreateUserService);
             const user = await createUser.execute({ name, email, password });
             res.json(user);
-        } catch (error) {
-            next(error)
+        } catch (error: any) {
+            res.status(400).json({ error: error.message });
         }
     }
 }

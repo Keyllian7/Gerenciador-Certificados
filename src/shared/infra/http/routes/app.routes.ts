@@ -1,5 +1,6 @@
 import certificateRouter from "@modules/certificate/infra/http/routes/CertificateRoutes";
 import eventRouter from "@modules/events/infra/http/routes/EventRoutes";
+import sessionRoutes from "@modules/user/auth/infra/http/routes/SessionRoutes";
 import userRouter from "@modules/user/infra/http/routes/UserRoutes";
 import { Router, Request, Response } from "express";
 
@@ -12,5 +13,6 @@ route.get('/', (req: Request, res: Response) => {
 route.use('/certificate/', certificateRouter)
 route.use('/event/', eventRouter)
 route.use('/auth/', userRouter)
+route.use('/session/', sessionRoutes)
 
 export default route;
