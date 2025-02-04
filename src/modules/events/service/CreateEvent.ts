@@ -2,6 +2,7 @@ import { inject, injectable } from "tsyringe";
 import { IEventRepository } from "../domain/repositories/IEventRepository";
 import { IRequestCreateEvent } from "../domain/models/request/IRequestCreateEvent";
 import { IEvent } from "../domain/models/IEvent";
+import AppError from "@shared/errors/AppError";
 
 @injectable()
 class CreateEventService {
@@ -13,7 +14,7 @@ class CreateEventService {
         name, description, date, local, time
     }: IRequestCreateEvent): Promise<IEvent>{
         if(!name || !description || !date || !local || !time){
-            throw new Error('Missing required fields in create event service');
+            throw new AppError('missing required fields in create event service');
         }
         const event = this.eventRepository.create({
             name,

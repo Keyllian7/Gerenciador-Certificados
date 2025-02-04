@@ -1,7 +1,7 @@
 import { IUserRepository } from "@modules/user/domain/repositories/IUserRepository";
 import { inject, injectable } from "tsyringe";
-import { IRequestCreateSession } from "../domain/models/IRequestCreateSession";
-import { IResponseSession } from "../domain/models/IResponseSession";
+import { IRequestCreateSession } from "../domain/models/request/IRequestCreateSession";
+import { IResponseSession } from "../domain/models/response/IResponseSession";
 import { compare } from 'bcryptjs';
 import { sign, Secret } from 'jsonwebtoken';
 import session from '@config/session';

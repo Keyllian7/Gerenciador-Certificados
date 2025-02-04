@@ -1,10 +1,9 @@
 import CreateUserService from "@modules/user/service/CreateUser";
-import AppError from "@shared/errors/AppError";
 import { NextFunction, Response, Request } from "express";
 import { container } from "tsyringe";
 
 export default class UserController {
-    public async create(req: Request, res: Response, next: NextFunction): Promise<void>{
+    public async create(req: Request, res: Response, next: NextFunction): Promise<any>{
         try {
             const { name, email, password } = req.body;
             const createUser = container.resolve(CreateUserService);
