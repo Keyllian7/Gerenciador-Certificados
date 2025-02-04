@@ -1,6 +1,6 @@
 import certificateRouter from "@modules/certificate/infra/http/routes/CertificateRoutes";
 import eventRouter from "@modules/events/infra/http/routes/EventRoutes";
-import sessionRoutes from "@modules/user/auth/infra/http/routes/SessionRoutes";
+import sessionRoutes from "@modules/auth/infra/http/routes/SessionRoutes";
 import userRouter from "@modules/user/infra/http/routes/UserRoutes";
 import { Router, Request, Response } from "express";
 
