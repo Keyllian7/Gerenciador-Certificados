@@ -15,7 +15,7 @@ class CreateCertificateService {
         student, course,hours, instructor, date, city
     }: IRequestCreateCertificate): Promise<ICertificate> {
         if(!student || !course || !hours || !instructor ||!date || !city) {
-            throw new AppError('Missing required fields');
+            throw new AppError('missing required fields in create certificate service');
         }
 
         const certificate = this.certificateRepository.create({
