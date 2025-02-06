@@ -1,13 +1,8 @@
 import { isCelebrateError } from "celebrate";
-import { Request, Response, NextFunction } from "express";
+import { Request, Response } from "express";
 import AppError from "./AppError";
 
-export function globalErrorHandler(
-  err: Error,
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
+export function globalErrorHandler(err: Error, req: Request, res: Response) {
   if (isCelebrateError(err)) {
     const validationsErrors: string[] = [];
 
@@ -21,20 +16,20 @@ export function globalErrorHandler(
     return res.status(400).json({
       status: "error",
       message: "validation error in the data sent",
-      details: validationsErrors,
+      details: validationsErrors
     });
   }
-  if (err instanceof AppError){
+  if (err instanceof AppError) {
     return res.status(err.statusCode).json({
-        status: 'error',
-        message: err.message
-    })
+      status: "error",
+      message: err.message
+    });
   }
 
-  console.log('internal server error: ', err)
+  console.log("internal server error: ", err);
 
   return res.status(500).json({
-    status: 'error',
-    message: 'internal server error'
-  })
+    status: "error",
+    message: "internal server error"
+  });
 }

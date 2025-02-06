@@ -1,30 +1,37 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  DeleteDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn
+} from "typeorm";
 
 @Entity("certificate")
 export class Certificate {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
-  @Column({ type: "varchar"})
+  @Column({ type: "varchar" })
   student: string;
 
-  @Column({ type: "varchar"})
+  @Column({ type: "varchar" })
   course: string;
 
-  @Column({ type: "int"})
+  @Column({ type: "int" })
   hours: number;
 
-  @Column({ type: "varchar"})
+  @Column({ type: "varchar" })
   instructor: string;
 
-  @Column({ type: "uuid"})
+  @Column({ type: "uuid" })
   identification: string;
 
-  @Column({ type: "date"})
+  @Column({ type: "date" })
   date: Date;
 
-  @Column({ type: "varchar"})
-  city: string
+  @Column({ type: "varchar" })
+  city: string;
 
   @CreateDateColumn({ name: "createdAt" })
   createdAt: Date;
