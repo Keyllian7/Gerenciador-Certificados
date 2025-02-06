@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Event } from "./Event";
 
 @Entity("event_users")
 export class EventUser {
@@ -11,6 +12,12 @@ export class EventUser {
     @Column({ type: "uuid"})
     id_user: string
 
+    @Column({ type: "enum", enum: ["pending", "confirmed", "absent"] })
+    presence: string
+
+    @ManyToOne(() => Event, (event) => event.users)
+    event: Event
+
     @CreateDateColumn({ name: "createdAt" })
     createdAt: Date;
     
@@ -19,4 +26,5 @@ export class EventUser {
     
     @DeleteDateColumn({ name: "deletedAt" })
     deletedAt: null | Date;
+    
 }
