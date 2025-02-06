@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { EventUser } from "./EventUser";
 
 @Entity("events")
 export class Event {
@@ -19,6 +20,9 @@ export class Event {
 
     @Column({type: "time"})
     time: string;
+
+    @OneToMany(() => EventUser, (eventUser) => eventUser.event)
+    users: EventUser[];
 
     @CreateDateColumn({ name: "createdAt" })
     createdAt: Date;
