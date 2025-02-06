@@ -26,7 +26,7 @@ export class CreateEvents1737424277844 implements MigrationInterface {
         )
         await queryRunner.createTable(
             new Table({
-              name: "participants",
+              name: "event_users",
               columns: [
                 {
                   name: "id",
@@ -55,7 +55,7 @@ export class CreateEvents1737424277844 implements MigrationInterface {
               ]
             })
           )
-          await queryRunner.createForeignKey("participants",
+          await queryRunner.createForeignKey("event_users",
             new TableForeignKey({
               columnNames: ["id_event"],
               referencedColumnNames: ["id"],
@@ -63,7 +63,7 @@ export class CreateEvents1737424277844 implements MigrationInterface {
               onDelete: "CASCADE"
             })
           )
-          await queryRunner.createForeignKey("participants",
+          await queryRunner.createForeignKey("event_users",
             new TableForeignKey({
               columnNames: ["id_user"],
               referencedColumnNames: ["id"],
@@ -75,7 +75,7 @@ export class CreateEvents1737424277844 implements MigrationInterface {
 
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.dropTable("event");
-        await queryRunner.dropTable("participants");
+        await queryRunner.dropTable("event_users");
     }
 
 }
