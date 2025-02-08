@@ -1,0 +1,8 @@
+.docker/data
+node_modules
+.env
+.gitignore
+docker-compose.yml
+package-lock.json
+package.json
+tsconfig.json

@@ -1,9 +1,7 @@
-import { createConnection } from 'typeorm';
+import { createConnection } from "typeorm";
 
 createConnection()
   .then(async () => {
-    console.log('Database connection established successfully');
+    console.log("Database connection established successfully");
   })
-  .catch((error) =>
-    console.log('Error connecting to database: ', error)
-  );
+  .catch((error) => console.log("Error connecting to database: ", error));

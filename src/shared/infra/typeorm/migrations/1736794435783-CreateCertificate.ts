@@ -10,7 +10,7 @@ export class CreateCertificate1736794435783 implements MigrationInterface {
             name: "id",
             type: "uuid",
             isPrimary: true,
-            default: "uuid_generate_v4()",
+            default: "uuid_generate_v4()"
           },
           { name: "student", type: "varchar", isNullable: false },
           { name: "course", type: "varchar", isNullable: false },
@@ -29,8 +29,8 @@ export class CreateCertificate1736794435783 implements MigrationInterface {
             type: "timestamp",
             default: "now()"
           },
-          { name: "deletedAt", type: "timestamp", isNullable: true },
-        ],
+          { name: "deletedAt", type: "timestamp", isNullable: true }
+        ]
       })
     );
   }

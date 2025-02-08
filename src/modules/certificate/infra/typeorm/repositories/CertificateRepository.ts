@@ -4,16 +4,15 @@ import { getRepository, Repository } from "typeorm";
 import { ICertificate } from "@modules/certificate/domain/models/ICertificate";
 
 export class CertificateRepository implements ICertificateRepository {
-    private ormRepository: Repository<Certificate>;
+  private ormRepository: Repository<Certificate>;
 
-    constructor() {
-        this.ormRepository = getRepository(Certificate);
-    }
+  constructor() {
+    this.ormRepository = getRepository(Certificate);
+  }
 
-    public async create(certificate: ICertificate): Promise<ICertificate> {
-        const newCertificate = this.ormRepository.create(certificate);
-        await this.ormRepository.save(newCertificate);
-        return newCertificate;
-    }
-
+  public async create(certificate: ICertificate): Promise<ICertificate> {
+    const newCertificate = this.ormRepository.create(certificate);
+    await this.ormRepository.save(newCertificate);
+    return newCertificate;
+  }
 }
