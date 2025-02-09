@@ -3,11 +3,14 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn
 } from "typeorm";
 import { EventUser } from "./EventUser";
+import { User } from "@modules/user/infra/typeorm/entities/User";
 
 @Entity("events")
 export class Event {

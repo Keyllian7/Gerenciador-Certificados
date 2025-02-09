@@ -1,3 +1,5 @@
+import { User } from "@modules/user/infra/typeorm/entities/User";
+
 export interface IEvent {
   name: string;
   description: string;
