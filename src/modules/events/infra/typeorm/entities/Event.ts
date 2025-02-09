@@ -29,6 +29,10 @@ export class Event {
   @Column({ type: "time" })
   time: string;
 
+  @ManyToOne(() => User)
+  @JoinColumn({ name: "instructor" })
+  instructor: User;
+
   @OneToMany(() => EventUser, (eventUser) => eventUser.event)
   users: EventUser[];
 

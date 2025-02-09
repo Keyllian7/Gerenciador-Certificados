@@ -22,6 +22,7 @@ export class CreateEvents1737424277844 implements MigrationInterface {
           { name: "date", type: "date", isNullable: false },
           { name: "local", type: "varchar", isNullable: false },
           { name: "time", type: "time", isNullable: false },
+          { name: "instructor", type: "varchar", isNullable: false },
           { name: "createdAt", type: "timestamp", default: "now()" },
           { name: "updatedAt", type: "timestamp", default: "now()" },
           { name: "deletedAt", type: "timestamp", isNullable: true }
@@ -73,6 +74,15 @@ export class CreateEvents1737424277844 implements MigrationInterface {
       "event_users",
       new TableForeignKey({
         columnNames: ["id_user"],
+        referencedColumnNames: ["id"],
+        referencedTableName: "users",
+        onDelete: "CASCADE"
+      })
+    );
+    await queryRunner.createForeignKey(
+      "events",
+      new TableForeignKey({
+        columnNames: ["instructor"],
         referencedColumnNames: ["id"],
         referencedTableName: "users",
         onDelete: "CASCADE"

@@ -4,6 +4,7 @@ export interface IEvent {
   date: Date;
   local: string;
   time: string;
+  instructor: User;
   createdAt: Date;
   updatedAt: Date;
   deletedAt?: null | Date;
