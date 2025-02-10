@@ -14,9 +14,10 @@ class CreateUserService {
   public async execute({
     name,
     email,
-    password
+    password,
+    role
   }: IRequestCreateUser): Promise<IUser> {
-    if (!name || !email || !password) {
+    if (!name || !email || !password || !role) {
       throw new AppError("incomplete data in create user service");
     }
     const userExist = await this.userRepository.findByEmail(email);
@@ -28,6 +29,7 @@ class CreateUserService {
       name,
       email,
       password: hashedPassword,
+      role,
       createdAt: new Date(),
       updatedAt: new Date(),
       deletedAt: null

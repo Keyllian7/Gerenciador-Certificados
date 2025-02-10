@@ -1,8 +1,11 @@
+import { User } from "@modules/user/infra/typeorm/entities/User";
+import { Event } from "@modules/events/infra/typeorm/entities/Event";
 import {
-  Column,
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn
 } from "typeorm";
@@ -12,26 +15,13 @@ export class Certificate {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
-  @Column({ type: "varchar" })
-  student: string;
+  @ManyToOne(() => User)
+  @JoinColumn({ name: "student" })
+  student: User;
 
-  @Column({ type: "varchar" })
-  course: string;
-
-  @Column({ type: "int" })
-  hours: number;
-
-  @Column({ type: "varchar" })
-  instructor: string;
-
-  @Column({ type: "uuid" })
-  identification: string;
-
-  @Column({ type: "date" })
-  date: Date;
-
-  @Column({ type: "varchar" })
-  city: string;
+  @ManyToOne(() => Event)
+  @JoinColumn({ name: "event" })
+  event: Event;
 
   @CreateDateColumn({ name: "createdAt" })
   createdAt: Date;

@@ -15,6 +15,12 @@ export class CreateUsers1737424277843 implements MigrationInterface {
           { name: "name", type: "varchar", isNullable: false },
           { name: "email", type: "varchar", isNullable: false },
           { name: "password", type: "varchar", isNullable: false },
+          {
+            name: "role",
+            type: "enum",
+            enum: ["user", "instructor"],
+            isNullable: false
+          },
           { name: "createdAt", type: "timestamp", default: "now()" },
           { name: "updatedAt", type: "timestamp", default: "now()" },
           { name: "deletedAt", type: "timestamp", isNullable: true }
